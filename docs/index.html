@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WIUT FinTech | Signals, seen in time</title>
+  <style>
+    :root { --ink:#172b3a; --muted:#71808d; --navy:#142232; --green:#d3f476; --line:#e3e8ec; --paper:#f4f6f8; --blue:#2166ac; --red:#d6604d; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif; }
+    .layout { display:grid; grid-template-columns:260px minmax(0,1fr); min-height:100vh; }
+    aside { background:#111b27; color:#e5edf4; padding:28px 20px; position:sticky; top:0; height:100vh; }
+    aside h2 { font-size:1.05rem; margin:10px 0 5px; color:white; }
+    aside p { color:#aebdca; font-size:.86rem; margin:0 0 20px; }
+    nav button { display:block; width:100%; border:0; background:transparent; color:#c8d3dc; text-align:left; padding:9px 10px; border-radius:8px; cursor:pointer; font:inherit; font-size:.88rem; }
+    nav button:hover, nav button.active { background:#203447; color:var(--green); }
+    main { max-width:1240px; width:100%; margin:0 auto; padding:28px 34px 52px; }
+    .hero { background:linear-gradient(118deg,#142232,#20384a 62%,#345448); color:white; border-radius:24px; padding:42px 46px; margin-bottom:24px; box-shadow:0 20px 45px #15273622; }
+    .eyebrow { color:var(--green); font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
+    h1 { font-size:clamp(2.2rem,5vw,4.1rem); line-height:1.03; letter-spacing:-.045em; margin:16px 0 12px; }
+    .hero p { color:#d3dce3; max-width:700px; margin:0; }
+    .tag { display:inline-block; border:1px solid #d3f47666; border-radius:99px; padding:5px 11px; margin-top:20px; color:#e7f4ce; background:#d3f47614; font-size:.78rem; }
+    section { display:none; }
+    section.active { display:block; }
+    h2 { color:#20384a; letter-spacing:-.025em; margin:18px 0 10px; }
+    .callout { background:white; border:1px solid var(--line); border-left:4px solid #8fb83f; padding:15px 17px; border-radius:12px; margin:14px 0 20px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:14px; margin:16px 0; }
+    .card { background:white; border:1px solid var(--line); border-radius:16px; padding:17px; box-shadow:0 6px 18px #18283409; }
+    .card .label { color:var(--muted); font-size:.82rem; }
+    .card .value { color:var(--ink); font-size:1.55rem; font-weight:700; margin-top:5px; }
+    .chart { background:white; border:1px solid var(--line); border-radius:16px; padding:17px; margin:16px 0; }
+    .chart h3 { font-size:1rem; margin:0 0 14px; color:#20384a; }
+    .bar { display:grid; grid-template-columns:minmax(100px,1fr) 3fr 70px; gap:10px; align-items:center; margin:9px 0; font-size:.86rem; }
+    .track { height:10px; background:#edf0f2; border-radius:99px; overflow:hidden; }
+    .fill { height:100%; background:linear-gradient(90deg,var(--blue),#4d9221); border-radius:99px; }
+    table { width:100%; border-collapse:collapse; background:white; border:1px solid var(--line); border-radius:12px; overflow:hidden; display:table; }
+    th,td { text-align:left; padding:10px 12px; border-bottom:1px solid #edf0f2; font-size:.88rem; }
+    th { color:#526473; background:#fafbfc; }
+    footer { color:var(--muted); border-top:1px solid var(--line); margin-top:34px; padding-top:18px; font-size:.84rem; }
+    @media (max-width:760px) {
+      .layout { display:block; } aside { position:static; height:auto; padding:18px; } nav { display:flex; overflow:auto; gap:6px; } nav button { min-width:max-content; } main { padding:16px; } .hero { padding:28px 24px; border-radius:18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <div class="eyebrow">WIUT FINTECH</div>
+      <h2>Explore the analysis</h2>
+      <p>14 chapters · aggregate EDA</p>
+      <nav id="nav"></nav>
+    </aside>
+    <main>
+      <div class="hero">
+        <div class="eyebrow">RESEARCH BRIEF · SYNTHETIC COMPETITION DATA</div>
+        <h1>Signals, seen in time.</h1>
+        <p>An evidence-led tour of alert outcomes, transaction histories, and modeling choices shaped by the data.</p>
+        <span class="tag">Aggregate analysis · No predictions are served</span>
+      </div>
+      <div id="content"><p>Loading the aggregate report…</p></div>
+      <footer>Exploratory analysis only · Aggregate data · No individual signal records or transaction rows are published.</footer>
+    </main>
+  </div>
+  <script>
+    const chapters = [
+      ["overview", "1. Problem overview"], ["structure", "2. Dataset structure"], ["quality", "3. Data quality and time"],
+      ["target", "4. Target distribution"], ["activity", "5. Transaction activity"], ["direction", "6. Incoming vs outgoing"],
+      ["types", "7. Transaction types"], ["amounts", "8. Amount distributions"], ["recent", "9. Recent behavior"],
+      ["comparison", "10. Label-group comparisons"], ["observations", "11. Key observations"],
+      ["features", "12. Feature engineering"], ["method", "13. Validation and model"], ["conclusion", "14. Conclusion"]
+    ];
+    const nav = document.querySelector("#nav"), content = document.querySelector("#content");
+    chapters.forEach(([id, label], i) => {
+      const button = document.createElement("button"); button.textContent = label; button.dataset.id = id;
+      button.onclick = () => select(id); nav.appendChild(button);
+    });
+    const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+    const fmt = v => typeof v === "number" ? v.toLocaleString(undefined, {maximumFractionDigits:2}) : esc(v);
+    const card = (label, value) => `<div class="card"><div class="label">${esc(label)}</div><div class="value">${fmt(value)}</div></div>`;
+    const cards = rows => `<div class="grid">${rows.map(x => card(x[0], x[1])).join("")}</div>`;
+    function bars(title, rows, labelKey, valueKey) {
+      if (!rows?.length) return "";
+      const max = Math.max(...rows.map(r => Number(r[valueKey]) || 0), 1);
+      return `<div class="chart"><h3>${esc(title)}</h3>${rows.slice(0,12).map(r => `<div class="bar"><span>${esc(r[labelKey])}</span><span class="track"><span class="fill" style="width:${Math.max(2, (Number(r[valueKey]) || 0) / max * 100)}%"></span></span><strong>${fmt(r[valueKey])}</strong></div>`).join("")}</div>`;
+    }
+    function select(id) {
+      document.querySelectorAll("nav button").forEach(b => b.classList.toggle("active", b.dataset.id === id));
+      render(id);
+    }
+    function render(id) {
+      const {dataset:d, quality:q, target:t, activity:a, amounts:am, recent:r, target_comparison:c, method:m} = window.report;
+      let html = "";
+      if (id === "overview") html = `<h2>Problem overview</h2><p>This project studies whether a financial signal should be escalated for review or dismissed. The report explains the data, limitations, and analysis choices; it does not score signals or serve a prediction model.</p><div class="callout"><b>Boundary:</b> the competition data are synthetic and transformed/localized. Descriptive comparisons do not establish causality or guarantee generalization.</div>${cards([["Labeled signals",d.train_signals],["Unlabeled signals",d.test_signals],["Training dates",`${d.train_date_min} – ${d.train_date_max}`]])}<p>Transaction behavior is summarized only from transactions dated on or before each linked signal date.</p>`;
+      if (id === "structure") html = `<h2>Dataset structure</h2><p>Training signals contain identifiers, dates, and a binary label. Test signals contain the same signal fields without labels. Transactions link through the shared identifier.</p>${cards([["Training transactions",d.train_transaction_rows],["Test transactions",d.test_transaction_rows],["Signal fields",d.train_signal_columns.join(", ")]])}<div class="callout">Only aggregate summaries are published; signal identifiers and individual transaction rows are not included.</div>`;
+      if (id === "quality") html = `<h2>Data quality and temporal relationship</h2><p>Future-dated transaction records are excluded from historical behavior summaries to avoid using information unavailable at signal time.</p>${cards([["Duplicate training IDs",q.train_signal_duplicate_ids],["Duplicate test IDs",q.test_signal_duplicate_ids],["Unmatched transaction IDs",q.transaction_signal_ids_unmatched],["Missing transaction dates",q.transaction_missing_date],["Future transactions",`${q.future_transactions} (${q.future_transaction_percent}%)`]])}`;
+      if (id === "target") html = `<h2>Target distribution</h2><p>Label 0 denotes dismissed and label 1 denotes escalated.</p>${bars("Training label counts", t.counts, "label", "count")}${bars("Monthly escalation share", t.monthly, "month", "escalation_rate")}`;
+      if (id === "activity") html = `<h2>Transaction activity</h2><p>Monthly totals describe eligible historical records. Signal histories vary substantially.</p>${bars("Eligible transactions by month", a.transactions_by_month, "month", "count")}${cards([["Mean transactions / signal",a.transactions_per_signal.mean],["Median transactions / signal",a.transactions_per_signal.median],["90th percentile",a.transactions_per_signal.p90],["No eligible history",`${a.transactions_per_signal.zero_signal_percent}%`]])}`;
+      if (id === "direction") html = `<h2>Incoming vs outgoing behavior</h2><p>Direction is shown as recorded. Counts do not measure net cash flow.</p>${bars("Transaction records by direction", a.directions, "category", "count")}`;
+      if (id === "types") html = `<h2>Transaction types</h2><p>Transaction-type mix provides context for feature design.</p>${bars("Most frequent transaction types", a.types, "category", "count")}`;
+      if (id === "amounts") html = `<h2>Amount distributions</h2><p>The dataset contains an amount index rather than a currency-denominated amount.</p>${cards([["Mean amount index",am.mean],["Median amount index",am.median],["95th percentile",am.p95]])}${bars("Amount index distribution", am.distribution, "bin", "count")}`;
+      if (id === "recent") html = `<h2>Recent behavior</h2><p>Signal arrivals are uneven across dates, motivating recency and fixed lookback windows.</p>${cards([["Date span (days)",r.date_range_days],["Signals in latest month",r.latest_month_signals]])}${bars("Latest active dates", r.daily, "date", "signals")}`;
+      if (id === "comparison") html = `<h2>Escalated vs dismissed comparisons</h2><p>These are unadjusted associations within labeled data, not causal effects.</p><table><tr><th>Group</th><th>Signals</th><th>Mean transactions / signal</th><th>Mean amount / signal</th></tr>${["dismissed","escalated"].map(k => `<tr><td>${esc(k)}</td><td>${fmt(c[k].signals)}</td><td>${fmt(c[k].transactions_per_signal_mean)}</td><td>${fmt(c[k].amount_per_signal_mean)}</td></tr>`).join("")}</table>`;
+      if (id === "observations") html = `<h2>Key observations</h2><ul><li>${fmt(d.train_signals)} labeled and ${fmt(d.test_signals)} unlabeled signals are available.</li><li>The median eligible history is ${fmt(a.transactions_per_signal.median)} transactions per signal.</li><li>${fmt(q.future_transaction_percent)}% of linked dated training transactions are future-dated and excluded.</li><li>Escalated cases are a minority class, so ROC-AUC is used for ranking evaluation.</li><li>Label-group differences are descriptive associations, not causal effects.</li></ul>`;
+      if (id === "features") html = `<h2>Feature engineering decisions</h2><p>The final model uses compact, label-free summaries available at signal time.</p><div class="callout"><b>Feature groups:</b> history and mix, amount profile, 7/30/90-day recency windows, days since last transaction, history span, and signal calendar context.</div><p>Future transactions are excluded, zero denominators are handled explicitly, and unique signal IDs are not target-encoded.</p>`;
+      if (id === "method") { const e = m.model_evaluation || {}; html = `<h2>Validation and model</h2><p>Model candidates were compared on expanding chronological folds: each fold trains on earlier signals and validates on a later date block.</p>${cards([["Selected model",e.model || "Shallow XGBoost"],["Features",e.feature_count],["OOF rows",e.oof_rows],["OOF ROC-AUC",e.oof_roc_auc],["Forward folds",e.fold_count]])}<p>OOF performance is an internal validation estimate, not a hidden-test or leaderboard score.</p>`; }
+      if (id === "conclusion") html = `<h2>Final conclusion</h2><p>The strongest validated approach combines strict as-of-signal transaction history with interpretable count, amount, mix, recency, and calendar features. Controlled experiments favored a shallow XGBoost model on 28 features.</p><div class="callout"><b>Conclusion:</b> this static Pages report presents aggregate EDA and modeling decisions. It does not expose records or serve predictions.</div>`;
+      content.innerHTML = html;
+    }
+    fetch("assets/eda_summary.json").then(r => r.json()).then(data => { window.report = data; select("overview"); }).catch(() => { content.innerHTML = "<div class='callout'>The aggregate report could not be loaded.</div>"; });
+  </script>
+</body>
+</html>

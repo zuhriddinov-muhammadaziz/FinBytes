@@ -20,6 +20,8 @@ The aggregate JSON contains counts, distributions, and summary statistics only; 
 
 Push this project to a Git repository, then create a Streamlit Community Cloud app using `eda_site/app.py` as the entry point. Streamlit installs the dependencies from `eda_site/requirements.txt`. Include the precomputed `eda_site/assets/eda_summary.json` in the repository. Do not include private/local data paths, organizer-only materials, or raw competition data in a public deployment. Confirm you have permission to publish the aggregate findings and charts before making the repository or app public.
 
+For a static GitHub Pages deployment, the repository workflow publishes `docs/index.html` and copies only the aggregate `eda_summary.json` into the Pages artifact. The expected URL is `https://zuhriddinov-muhammadaziz.github.io/FinBytes/` after the workflow succeeds. GitHub Pages cannot run the Streamlit Python app itself.
+
 The site is not deployed by this project setup. A deployment should only be described as public after the deployed URL has been checked.
 
 ## Contents
@@ -28,4 +30,3 @@ The site is not deployed by this project setup. A deployment should only be desc
 - `build_summary.py` — builds aggregate-only chart data from the project's source data.
 - `assets/eda_summary.json` — precomputed summary consumed by the app.
 - `requirements.txt` — deployment dependencies.
-

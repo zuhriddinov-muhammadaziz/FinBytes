@@ -72,6 +72,8 @@ The Streamlit site has its own deployment requirements. Install them into the sa
 
 Open the local URL printed by Streamlit. `eda_site/assets/eda_summary.json` contains aggregate chart data and OOF metric summaries and is used for fast app startup; rebuild it when the raw data or model artifacts change. The site identifies the competition data as synthetic. The site has been verified locally, but is not deployed publicly. Deployment guidance is in [`eda_site/README.md`](eda_site/README.md).
 
+The aggregate report also has a static GitHub Pages entry point. After the Pages workflow completes, open `https://zuhriddinov-muhammadaziz.github.io/FinBytes/`. It publishes only `docs/index.html` and the aggregate summary JSON; the Streamlit app remains the local/Streamlit deployment option.
+
 ## Reproduction artifacts
 
 The latest clean run inventory, including output dimensions, verification results, and SHA-256 checksums, is recorded in [`artifacts/final_reproduction_inventory.md`](artifacts/final_reproduction_inventory.md).
