@@ -1,4 +1,4 @@
-# WIUT FinTech: leakage-safe classification and EDA
+# WIUT HACKATHON FinTech: leakage-safe classification and EDA
 
 For a detailed record of completed work, current risks, verification evidence, and a prioritized next-step plan, see [`PROJECT_STATUS_AND_NEXT_STEPS.md`](PROJECT_STATUS_AND_NEXT_STEPS.md).
 
