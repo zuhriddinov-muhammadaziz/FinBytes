@@ -1,0 +1,60 @@
+{
+  "seed": 42,
+  "fixed_fold_definitions_sha256": "f8bbe25b08b667469f4a7a46266e57d56384af8a9520f3c226bdd8c7f04017f6",
+  "fold_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "validation_indices_sha256": "d37649707114696367ba3cf10bcf483b67887df547787fc33554ffe282c0467a",
+  "train_signal_rows": 14000,
+  "base_feature_count": 28,
+  "experiment_count": 22,
+  "test_data_loaded": false,
+  "feature_groups": {
+    "windows": [
+      "transaction_count_14d",
+      "amount_sum_14d",
+      "transaction_count_60d",
+      "amount_sum_60d",
+      "transaction_count_180d",
+      "amount_sum_180d"
+    ],
+    "velocity": [
+      "count_rate_ratio_7d_vs_30d",
+      "count_rate_ratio_30d_vs_90d",
+      "amount_rate_ratio_7d_vs_30d",
+      "amount_rate_ratio_30d_vs_90d"
+    ],
+    "gaps": [
+      "gap_mean_days",
+      "gap_median_days",
+      "gap_std_days",
+      "gap_min_days",
+      "gap_q25_days",
+      "gap_q75_days",
+      "gap_max_days",
+      "gap_cv",
+      "gap_short_share",
+      "gap_long_share"
+    ],
+    "sequence": [
+      "last_direction_kirim",
+      "last_direction_chiqim",
+      "last_type_karta",
+      "last_type_bank_otkazmasi",
+      "last_type_naqd",
+      "last_type_xalqaro",
+      "last_amount",
+      "last_amount_to_mean_ratio",
+      "direction_switch_rate",
+      "type_switch_rate",
+      "direction_transition_count",
+      "type_transition_count"
+    ]
+  },
+  "feature_generation": "as-of-signal train transactions only; timestamp stable-sorted for sequence summaries",
+  "runtime_seconds": 63.562
+}

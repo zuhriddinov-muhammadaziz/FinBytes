@@ -1,0 +1,14 @@
+# Raw competition data and local/private material
+data/raw/
+data/processed/
+.venv/
+.jupyter/
+.streamlit/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+artifacts/*
+!artifacts/final_reproduction_inventory.md
+!artifacts/predictions/
+artifacts/predictions/*
+!artifacts/predictions/team_4BD478E9.csv

@@ -1,0 +1,162 @@
+# WIUT FinTech Hackathon Configuration File
+
+# Project Information
+project:
+  name: "wiut_fintech_hackathon"
+  version: "1.0.0"
+  description: "Leakage-safe ML solution for WIUT Hackathon 2026 FinTech elimination task"
+
+# Team Information
+team:
+  id: "4BD478E9"
+  name: "WIUT FinTech Team"
+
+# File Paths
+paths:
+  data_dir: "data/raw"
+  train_signals: "data/raw/train_signals.csv"
+  test_signals: "data/raw/test_signals.csv"
+  train_transactions: "data/raw/train_transactions.parquet"
+  test_transactions: "data/raw/test_transactions.parquet"
+  sample_submission: "data/raw/sample_submission (3).csv"
+  processed_data: "data/processed"
+  artifacts: "artifacts"
+  models: "artifacts/models"
+  predictions: "artifacts/predictions"
+  experiments: "experiments"
+  validation_plan: "artifacts/validation_plan.json"
+
+# Data Processing
+data:
+  target_column: "eskalatsiya"
+  signal_id_column: "signal_id"
+  signal_date_column: "signal_sanasi"
+  transaction_date_column: "tranzaksiya_vaqti"  # Expected transaction date column
+  id_column: "signal_id"
+  submission_id_column: "signal_id"
+  submission_target_column: "ehtimollik"
+  
+  # Temporal settings
+  temporal_filtering: true
+  allow_future_transactions: false  # CRITICAL: Set to false to prevent leakage
+  
+  # Data validation
+  check_signal_id_overlap: true
+  check_temporal_leakage: true
+  check_missing_signal_ids: true
+  check_duplicates: true
+  check_cross_leakage: true
+
+# Feature Engineering
+features:
+  # Transaction aggregations
+  transaction_aggregations:
+    - "count"
+    - "sum"
+    - "mean"
+    - "std"
+    - "min"
+    - "max"
+    - "median"
+  
+  # Temporal features
+  temporal_features:
+    - "days_since_last_transaction"
+    - "days_since_first_transaction"
+    - "transaction_frequency"
+    - "average_days_between_transactions"
+  
+  # Amount features
+  amount_features:
+    - "total_amount"
+    - "average_amount"
+    - "amount_std"
+    - "min_amount"
+    - "max_amount"
+
+# Model Settings
+model:
+  # Random seed for reproducibility
+  random_seed: 42
+  
+  # Cross-validation settings
+  cv:
+    n_splits: 5
+    strategy: "time_aware"  # Options: "time_aware", "stratified", "group"
+    time_column: "signal_sanasi"
+    
+  # Model types to try
+  models:
+    - "lightgbm"
+    - "catboost"
+    - "xgboost"
+    - "logistic_regression"
+  
+  # Evaluation metric
+  metric: "roc_auc"
+
+# LightGBM Parameters
+lightgbm:
+  objective: "binary"
+  metric: "auc"
+  boosting_type: "gbdt"
+  num_leaves: 31
+  learning_rate: 0.05
+  feature_fraction: 0.8
+  bagging_fraction: 0.8
+  bagging_freq: 5
+  verbose: -1
+  n_estimators: 1000
+
+# CatBoost Parameters
+catboost:
+  loss_function: "Logloss"
+  eval_metric: "AUC"
+  iterations: 1000
+  learning_rate: 0.05
+  depth: 6
+  l2_leaf_reg: 3
+  verbose: False
+
+# XGBoost Parameters
+xgboost:
+  objective: "binary:logistic"
+  eval_metric: "auc"
+  learning_rate: 0.05
+  max_depth: 6
+  min_child_weight: 1
+  subsample: 0.8
+  colsample_bytree: 0.8
+  n_estimators: 1000
+
+# Validation Settings
+validation:
+  n_splits: 5
+  strategy: "time_aware"  # Options: "stratified_kfold", "time_aware"
+  temporal_column: "signal_sanasi"
+  leakage_detection: true
+  test_size: 0.2
+  stratify: true
+  time_aware: true
+  
+# Submission Settings
+submission:
+  filename_format: "team_{team_id}.csv"
+  required_columns:
+    - "signal_id"
+    - "ehtimollik"
+  probability_range: [0, 1]
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "artifacts/logs/training.log"
+
+# Reproducibility
+reproducibility:
+  random_seed: 42
+  deterministic: true
+  save_model_artifacts: true
+  save_predictions: true
+  save_feature_importance: true
