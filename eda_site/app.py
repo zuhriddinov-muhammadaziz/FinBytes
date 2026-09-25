@@ -32,7 +32,7 @@ section[data-testid="stSidebar"] [data-baseweb="select"] div {background:#1a2735
 section[data-testid="stSidebar"] hr {border-color:#344454}
 .hero {position:relative;overflow:hidden;background:linear-gradient(118deg,#142232 0%,#20384a 62%,#345448 100%);color:white;border-radius:24px;padding:2.4rem 2.7rem;margin-bottom:1.6rem;box-shadow:0 20px 45px rgba(21,39,54,.14)}
 .hero:after {content:"";position:absolute;width:280px;height:280px;border:1px solid rgba(211,244,118,.23);border-radius:50%;right:-80px;top:-145px;box-shadow:0 0 0 28px rgba(211,244,118,.045),0 0 0 58px rgba(211,244,118,.035)}
-.eyebrow {font-size:.72rem;letter-spacing:.19em;text-transform:uppercase;color:#d3f476;font-weight:700;margin-bottom:1.15rem}
+.eyebrow {font-size:.72rem;letter-spacing:.19em;color:#d3f476;font-weight:700;margin-bottom:1.15rem}
 .hero h1 {font-size:clamp(2.3rem,5vw,4.1rem);line-height:1.03;letter-spacing:-.045em;margin:0 0 .8rem;color:white;font-weight:650}
 .hero p {font-size:1.03rem;margin:.2rem 0;color:#d3dce3;max-width:690px}
 .hero-tag {display:inline-block;margin-top:1.2rem;border:1px solid rgba(211,244,118,.35);border-radius:99px;padding:.35rem .72rem;font-size:.75rem;color:#e7f4ce;background:rgba(211,244,118,.08)}
@@ -201,7 +201,7 @@ def show(s):
 
 
 summary = load_summary()
-st.markdown('<div class="hero"><div class="eyebrow">WIUT FINTECH · RESEARCH BRIEF</div><h1>Signals, seen in time.</h1><p>An evidence-led tour of alert outcomes, transaction histories, and the modeling choices shaped by the data.</p><span class="hero-tag">Synthetic competition data · Aggregate analysis</span></div>', unsafe_allow_html=True)
+st.markdown('<div class="hero"><div class="eyebrow">FinBytes · RESEARCH BRIEF</div><h1>Signals, seen in time.</h1><p>An evidence-led tour of alert outcomes, transaction histories, and the modeling choices shaped by the data.</p><span class="hero-tag">Synthetic competition data · Aggregate analysis</span></div>', unsafe_allow_html=True)
 if summary is None:
     st.error("The precomputed aggregate summary is missing. From the project root, run: python eda_site/build_summary.py")
     st.stop()
