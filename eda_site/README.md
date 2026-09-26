@@ -1,4 +1,4 @@
-# WIUT FinTech EDA site
+# FinBytes EDA site
 
 A public-facing Streamlit report that explains the project data and analysis. It is an exploratory report, not a prediction or model-serving application.
 

@@ -1,4 +1,4 @@
-"""Public-facing, aggregate-only EDA website for the WIUT FinTech task."""
+"""Public-facing, aggregate-only FinBytes EDA website."""
 from __future__ import annotations
 
 import json
@@ -20,7 +20,7 @@ SECTIONS = [
 ]
 COLORS = ["#2166ac", "#d6604d", "#4d9221", "#762a83", "#e08214", "#4393c3"]
 
-st.set_page_config(page_title="WIUT FinTech | Exploratory Data Analysis", page_icon="📊", layout="wide")
+st.set_page_config(page_title="FinBytes | Exploratory Data Analysis", page_icon="📊", layout="wide")
 st.markdown("""
 <style>
 .stApp {background:#f4f6f8;color:#17212b}
@@ -205,7 +205,7 @@ st.markdown('<div class="hero"><div class="eyebrow">FinBytes · RESEARCH BRIEF</
 if summary is None:
     st.error("The precomputed aggregate summary is missing. From the project root, run: python eda_site/build_summary.py")
     st.stop()
-st.sidebar.markdown('<div style="font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#d3f476;font-weight:700;margin:.3rem 0 1rem">FIELD NOTES / 2025</div>', unsafe_allow_html=True)
+st.sidebar.markdown('<div style="font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#d3f476;font-weight:700;margin:.3rem 0 1rem">FINBYTES · FIELD NOTES / 2025</div>', unsafe_allow_html=True)
 st.sidebar.title("Explore the analysis")
 st.sidebar.caption("14 chapters · descriptive EDA")
 st.sidebar.selectbox("Section", SECTIONS, key="section")
