@@ -24,6 +24,8 @@ For a static GitHub Pages deployment, the repository workflow publishes `docs/in
 
 The site is not deployed by this project setup. A deployment should only be described as public after the deployed URL has been checked.
 
+The GitHub Pages version is a standalone static report at `docs/index.html`. Its aggregate summary is embedded in that page so charts, metrics, and comparison tables do not depend on a separate JSON request or a project-subpath asset URL. After rebuilding `eda_site/assets/eda_summary.json`, refresh the embedded copy in `docs/index.html` before publishing.
+
 ## Contents
 
 - `app.py` — interactive report with all 14 requested sections.

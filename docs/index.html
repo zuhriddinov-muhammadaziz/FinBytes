@@ -61,6 +61,1290 @@
       <footer>Exploratory analysis only · Aggregate data · No individual signal records or transaction rows are published.</footer>
     </main>
   </div>
+  <script id="eda-summary" type="application/json">
+{
+  "generated_from_aggregates": true,
+  "dataset": {
+    "train_signals": 14000,
+    "test_signals": 6000,
+    "train_transaction_rows": 6987663,
+    "test_transaction_rows": 3027575,
+    "train_date_min": "2025-01-01",
+    "train_date_max": "2026-12-31",
+    "test_date_min": "2025-01-01",
+    "test_date_max": "2026-12-31",
+    "train_signal_columns": [
+      "signal_id",
+      "signal_sanasi",
+      "eskalatsiya"
+    ],
+    "test_signal_columns": [
+      "signal_id",
+      "signal_sanasi"
+    ],
+    "transaction_columns": [
+      "signal_id",
+      "tranzaksiya_vaqti",
+      "kirim_chiqim",
+      "tranzaksiya_turi",
+      "miqdor_indeksi"
+    ]
+  },
+  "quality": {
+    "train_signal_duplicate_ids": 0,
+    "test_signal_duplicate_ids": 0,
+    "transaction_signal_ids_unmatched": 0,
+    "transaction_missing_signal_id": 0,
+    "transaction_missing_date": 0,
+    "linked_dated_transactions": 6987663,
+    "future_transactions": 840,
+    "future_transaction_percent": 0.012,
+    "signals_with_future_transactions": 21,
+    "future_by_signal_percent": 0.15,
+    "transaction_column_quality": {
+      "signal_id": {
+        "nulls": 0,
+        "null_percent": 0.0,
+        "distinct": 14000
+      },
+      "tranzaksiya_vaqti": {
+        "nulls": 0,
+        "null_percent": 0.0,
+        "distinct": 6228041
+      },
+      "kirim_chiqim": {
+        "nulls": 0,
+        "null_percent": 0.0,
+        "distinct": 2
+      },
+      "tranzaksiya_turi": {
+        "nulls": 0,
+        "null_percent": 0.0,
+        "distinct": 4
+      },
+      "miqdor_indeksi": {
+        "nulls": 0,
+        "null_percent": 0.0,
+        "distinct": 6987522
+      }
+    }
+  },
+  "target": {
+    "counts": [
+      {
+        "class": 0,
+        "label": "Dismissed",
+        "count": 11595
+      },
+      {
+        "class": 1,
+        "label": "Escalated",
+        "count": 2405
+      }
+    ],
+    "monthly": [
+      {
+        "month": "2025-01",
+        "signals": 505,
+        "escalation_rate": 0.1703
+      },
+      {
+        "month": "2025-02",
+        "signals": 517,
+        "escalation_rate": 0.18569
+      },
+      {
+        "month": "2025-03",
+        "signals": 505,
+        "escalation_rate": 0.17624
+      },
+      {
+        "month": "2025-04",
+        "signals": 470,
+        "escalation_rate": 0.2
+      },
+      {
+        "month": "2025-05",
+        "signals": 466,
+        "escalation_rate": 0.16524
+      },
+      {
+        "month": "2025-06",
+        "signals": 497,
+        "escalation_rate": 0.14286
+      },
+      {
+        "month": "2025-07",
+        "signals": 746,
+        "escalation_rate": 0.16354
+      },
+      {
+        "month": "2025-08",
+        "signals": 735,
+        "escalation_rate": 0.17007
+      },
+      {
+        "month": "2025-09",
+        "signals": 696,
+        "escalation_rate": 0.13937
+      },
+      {
+        "month": "2025-10",
+        "signals": 856,
+        "escalation_rate": 0.17173
+      },
+      {
+        "month": "2025-11",
+        "signals": 790,
+        "escalation_rate": 0.15443
+      },
+      {
+        "month": "2025-12",
+        "signals": 805,
+        "escalation_rate": 0.17516
+      },
+      {
+        "month": "2026-01",
+        "signals": 767,
+        "escalation_rate": 0.16428
+      },
+      {
+        "month": "2026-02",
+        "signals": 704,
+        "escalation_rate": 0.16051
+      },
+      {
+        "month": "2026-03",
+        "signals": 778,
+        "escalation_rate": 0.19923
+      },
+      {
+        "month": "2026-04",
+        "signals": 608,
+        "escalation_rate": 0.21217
+      },
+      {
+        "month": "2026-05",
+        "signals": 635,
+        "escalation_rate": 0.17008
+      },
+      {
+        "month": "2026-06",
+        "signals": 634,
+        "escalation_rate": 0.14353
+      },
+      {
+        "month": "2026-07",
+        "signals": 427,
+        "escalation_rate": 0.17564
+      },
+      {
+        "month": "2026-08",
+        "signals": 419,
+        "escalation_rate": 0.179
+      },
+      {
+        "month": "2026-09",
+        "signals": 395,
+        "escalation_rate": 0.17468
+      },
+      {
+        "month": "2026-10",
+        "signals": 337,
+        "escalation_rate": 0.17507
+      },
+      {
+        "month": "2026-11",
+        "signals": 331,
+        "escalation_rate": 0.1994
+      },
+      {
+        "month": "2026-12",
+        "signals": 377,
+        "escalation_rate": 0.19098
+      }
+    ]
+  },
+  "activity": {
+    "transactions_by_month": [
+      {
+        "month": "2024-07",
+        "count": 19101
+      },
+      {
+        "month": "2024-08",
+        "count": 66296
+      },
+      {
+        "month": "2024-09",
+        "count": 107375
+      },
+      {
+        "month": "2024-10",
+        "count": 146461
+      },
+      {
+        "month": "2024-11",
+        "count": 168921
+      },
+      {
+        "month": "2024-12",
+        "count": 195941
+      },
+      {
+        "month": "2025-01",
+        "count": 235694
+      },
+      {
+        "month": "2025-02",
+        "count": 247210
+      },
+      {
+        "month": "2025-03",
+        "count": 289463
+      },
+      {
+        "month": "2025-04",
+        "count": 305366
+      },
+      {
+        "month": "2025-05",
+        "count": 343350
+      },
+      {
+        "month": "2025-06",
+        "count": 352958
+      },
+      {
+        "month": "2025-07",
+        "count": 387549
+      },
+      {
+        "month": "2025-08",
+        "count": 383490
+      },
+      {
+        "month": "2025-09",
+        "count": 375941
+      },
+      {
+        "month": "2025-10",
+        "count": 388303
+      },
+      {
+        "month": "2025-11",
+        "count": 362118
+      },
+      {
+        "month": "2025-12",
+        "count": 364685
+      },
+      {
+        "month": "2026-01",
+        "count": 345315
+      },
+      {
+        "month": "2026-02",
+        "count": 287091
+      },
+      {
+        "month": "2026-03",
+        "count": 291989
+      },
+      {
+        "month": "2026-04",
+        "count": 250102
+      },
+      {
+        "month": "2026-05",
+        "count": 236392
+      },
+      {
+        "month": "2026-06",
+        "count": 215019
+      },
+      {
+        "month": "2026-07",
+        "count": 195068
+      },
+      {
+        "month": "2026-08",
+        "count": 159546
+      },
+      {
+        "month": "2026-09",
+        "count": 117419
+      },
+      {
+        "month": "2026-10",
+        "count": 80305
+      },
+      {
+        "month": "2026-11",
+        "count": 45169
+      },
+      {
+        "month": "2026-12",
+        "count": 23186
+      }
+    ],
+    "transaction_count_distribution": [
+      {
+        "bin": "1–46",
+        "count": 412
+      },
+      {
+        "bin": "46–90.9",
+        "count": 405
+      },
+      {
+        "bin": "90.9–136",
+        "count": 526
+      },
+      {
+        "bin": "136–181",
+        "count": 591
+      },
+      {
+        "bin": "181–226",
+        "count": 654
+      },
+      {
+        "bin": "226–271",
+        "count": 773
+      },
+      {
+        "bin": "271–316",
+        "count": 825
+      },
+      {
+        "bin": "316–361",
+        "count": 883
+      },
+      {
+        "bin": "361–406",
+        "count": 859
+      },
+      {
+        "bin": "406–451",
+        "count": 871
+      },
+      {
+        "bin": "451–496",
+        "count": 840
+      },
+      {
+        "bin": "496–541",
+        "count": 797
+      },
+      {
+        "bin": "541–586",
+        "count": 769
+      },
+      {
+        "bin": "586–631",
+        "count": 638
+      },
+      {
+        "bin": "631–676",
+        "count": 620
+      },
+      {
+        "bin": "676–720",
+        "count": 572
+      },
+      {
+        "bin": "720–765",
+        "count": 498
+      },
+      {
+        "bin": "765–810",
+        "count": 416
+      },
+      {
+        "bin": "810–855",
+        "count": 350
+      },
+      {
+        "bin": "855–900",
+        "count": 298
+      },
+      {
+        "bin": "900–945",
+        "count": 243
+      },
+      {
+        "bin": "945–990",
+        "count": 221
+      },
+      {
+        "bin": "990–1.04e+03",
+        "count": 194
+      },
+      {
+        "bin": "1.04e+03–1.08e+03",
+        "count": 162
+      },
+      {
+        "bin": "1.08e+03–1.13e+03",
+        "count": 111
+      },
+      {
+        "bin": "1.13e+03–1.17e+03",
+        "count": 95
+      },
+      {
+        "bin": "1.17e+03–1.22e+03",
+        "count": 84
+      },
+      {
+        "bin": "1.22e+03–1.26e+03",
+        "count": 58
+      },
+      {
+        "bin": "1.26e+03–1.31e+03",
+        "count": 58
+      },
+      {
+        "bin": "1.31e+03–1.35e+03",
+        "count": 177
+      }
+    ],
+    "transactions_per_signal": {
+      "mean": 499.0588,
+      "median": 461.0,
+      "p90": 901.0,
+      "max": 2279,
+      "zero_signal_percent": 0.0
+    },
+    "directions": [
+      {
+        "category": "Incoming (kirim)",
+        "count": 5286266
+      },
+      {
+        "category": "Outgoing (chiqim)",
+        "count": 1700557
+      }
+    ],
+    "types": [
+      {
+        "category": "karta",
+        "count": 3758318
+      },
+      {
+        "category": "bank_otkazmasi",
+        "count": 2754388
+      },
+      {
+        "category": "naqd",
+        "count": 442295
+      },
+      {
+        "category": "xalqaro",
+        "count": 31822
+      }
+    ]
+  },
+  "amounts": {
+    "column": "miqdor_indeksi",
+    "is_index": true,
+    "count": 6986823,
+    "mean": -0.1334,
+    "median": -0.2442,
+    "p95": 1.6406,
+    "distribution": [
+      {
+        "bin": "-2.91–-2.73",
+        "count": 14762
+      },
+      {
+        "bin": "-2.73–-2.54",
+        "count": 7777
+      },
+      {
+        "bin": "-2.54–-2.36",
+        "count": 11568
+      },
+      {
+        "bin": "-2.36–-2.17",
+        "count": 21559
+      },
+      {
+        "bin": "-2.17–-1.99",
+        "count": 54569
+      },
+      {
+        "bin": "-1.99–-1.8",
+        "count": 68682
+      },
+      {
+        "bin": "-1.8–-1.62",
+        "count": 109613
+      },
+      {
+        "bin": "-1.62–-1.43",
+        "count": 171322
+      },
+      {
+        "bin": "-1.43–-1.25",
+        "count": 254537
+      },
+      {
+        "bin": "-1.25–-1.06",
+        "count": 356669
+      },
+      {
+        "bin": "-1.06–-0.877",
+        "count": 458005
+      },
+      {
+        "bin": "-0.877–-0.692",
+        "count": 537297
+      },
+      {
+        "bin": "-0.692–-0.507",
+        "count": 586883
+      },
+      {
+        "bin": "-0.507–-0.322",
+        "count": 597053
+      },
+      {
+        "bin": "-0.322–-0.137",
+        "count": 570245
+      },
+      {
+        "bin": "-0.137–0.0484",
+        "count": 525770
+      },
+      {
+        "bin": "0.0484–0.233",
+        "count": 466414
+      },
+      {
+        "bin": "0.233–0.418",
+        "count": 403862
+      },
+      {
+        "bin": "0.418–0.604",
+        "count": 342820
+      },
+      {
+        "bin": "0.604–0.789",
+        "count": 289825
+      },
+      {
+        "bin": "0.789–0.974",
+        "count": 239657
+      },
+      {
+        "bin": "0.974–1.16",
+        "count": 197574
+      },
+      {
+        "bin": "1.16–1.34",
+        "count": 159572
+      },
+      {
+        "bin": "1.34–1.53",
+        "count": 128046
+      },
+      {
+        "bin": "1.53–1.71",
+        "count": 99892
+      },
+      {
+        "bin": "1.71–1.9",
+        "count": 77763
+      },
+      {
+        "bin": "1.9–2.08",
+        "count": 59786
+      },
+      {
+        "bin": "2.08–2.27",
+        "count": 45529
+      },
+      {
+        "bin": "2.27–2.45",
+        "count": 34256
+      },
+      {
+        "bin": "2.45–2.64",
+        "count": 95516
+      }
+    ],
+    "mean_per_signal_distribution": [
+      {
+        "bin": "-2.19–-2.07",
+        "count": 2
+      },
+      {
+        "bin": "-2.07–-1.96",
+        "count": 1
+      },
+      {
+        "bin": "-1.96–-1.84",
+        "count": 1
+      },
+      {
+        "bin": "-1.84–-1.73",
+        "count": 1
+      },
+      {
+        "bin": "-1.73–-1.61",
+        "count": 6
+      },
+      {
+        "bin": "-1.61–-1.5",
+        "count": 5
+      },
+      {
+        "bin": "-1.5–-1.38",
+        "count": 12
+      },
+      {
+        "bin": "-1.38–-1.26",
+        "count": 49
+      },
+      {
+        "bin": "-1.26–-1.15",
+        "count": 52
+      },
+      {
+        "bin": "-1.15–-1.03",
+        "count": 122
+      },
+      {
+        "bin": "-1.03–-0.917",
+        "count": 221
+      },
+      {
+        "bin": "-0.917–-0.802",
+        "count": 344
+      },
+      {
+        "bin": "-0.802–-0.686",
+        "count": 540
+      },
+      {
+        "bin": "-0.686–-0.571",
+        "count": 735
+      },
+      {
+        "bin": "-0.571–-0.455",
+        "count": 934
+      },
+      {
+        "bin": "-0.455–-0.34",
+        "count": 1081
+      },
+      {
+        "bin": "-0.34–-0.224",
+        "count": 1281
+      },
+      {
+        "bin": "-0.224–-0.109",
+        "count": 1303
+      },
+      {
+        "bin": "-0.109–0.00675",
+        "count": 1325
+      },
+      {
+        "bin": "0.00675–0.122",
+        "count": 1202
+      },
+      {
+        "bin": "0.122–0.238",
+        "count": 1097
+      },
+      {
+        "bin": "0.238–0.353",
+        "count": 939
+      },
+      {
+        "bin": "0.353–0.469",
+        "count": 753
+      },
+      {
+        "bin": "0.469–0.584",
+        "count": 570
+      },
+      {
+        "bin": "0.584–0.7",
+        "count": 447
+      },
+      {
+        "bin": "0.7–0.815",
+        "count": 309
+      },
+      {
+        "bin": "0.815–0.931",
+        "count": 214
+      },
+      {
+        "bin": "0.931–1.05",
+        "count": 157
+      },
+      {
+        "bin": "1.05–1.16",
+        "count": 97
+      },
+      {
+        "bin": "1.16–1.28",
+        "count": 200
+      }
+    ],
+    "amount_per_signal_distribution": [
+      {
+        "bin": "-2.01e+03–-1.92e+03",
+        "count": 2
+      },
+      {
+        "bin": "-1.92e+03–-1.83e+03",
+        "count": 0
+      },
+      {
+        "bin": "-1.83e+03–-1.74e+03",
+        "count": 0
+      },
+      {
+        "bin": "-1.74e+03–-1.66e+03",
+        "count": 1
+      },
+      {
+        "bin": "-1.66e+03–-1.57e+03",
+        "count": 2
+      },
+      {
+        "bin": "-1.57e+03–-1.48e+03",
+        "count": 4
+      },
+      {
+        "bin": "-1.48e+03–-1.39e+03",
+        "count": 9
+      },
+      {
+        "bin": "-1.39e+03–-1.31e+03",
+        "count": 8
+      },
+      {
+        "bin": "-1.31e+03–-1.22e+03",
+        "count": 17
+      },
+      {
+        "bin": "-1.22e+03–-1.13e+03",
+        "count": 17
+      },
+      {
+        "bin": "-1.13e+03–-1.04e+03",
+        "count": 23
+      },
+      {
+        "bin": "-1.04e+03–-957",
+        "count": 35
+      },
+      {
+        "bin": "-957–-870",
+        "count": 63
+      },
+      {
+        "bin": "-870–-782",
+        "count": 84
+      },
+      {
+        "bin": "-782–-695",
+        "count": 137
+      },
+      {
+        "bin": "-695–-608",
+        "count": 195
+      },
+      {
+        "bin": "-608–-520",
+        "count": 276
+      },
+      {
+        "bin": "-520–-433",
+        "count": 392
+      },
+      {
+        "bin": "-433–-346",
+        "count": 566
+      },
+      {
+        "bin": "-346–-258",
+        "count": 850
+      },
+      {
+        "bin": "-258–-171",
+        "count": 1131
+      },
+      {
+        "bin": "-171–-83.4",
+        "count": 1689
+      },
+      {
+        "bin": "-83.4–3.95",
+        "count": 2696
+      },
+      {
+        "bin": "3.95–91.3",
+        "count": 2560
+      },
+      {
+        "bin": "91.3–179",
+        "count": 1432
+      },
+      {
+        "bin": "179–266",
+        "count": 792
+      },
+      {
+        "bin": "266–353",
+        "count": 415
+      },
+      {
+        "bin": "353–441",
+        "count": 215
+      },
+      {
+        "bin": "441–528",
+        "count": 166
+      },
+      {
+        "bin": "528–616",
+        "count": 223
+      }
+    ]
+  },
+  "recent": {
+    "date_range_days": 729,
+    "latest_month_signals": 377,
+    "daily": [
+      {
+        "date": "2026-10-03",
+        "signals": 13
+      },
+      {
+        "date": "2026-10-04",
+        "signals": 10
+      },
+      {
+        "date": "2026-10-05",
+        "signals": 4
+      },
+      {
+        "date": "2026-10-06",
+        "signals": 12
+      },
+      {
+        "date": "2026-10-07",
+        "signals": 11
+      },
+      {
+        "date": "2026-10-08",
+        "signals": 11
+      },
+      {
+        "date": "2026-10-09",
+        "signals": 16
+      },
+      {
+        "date": "2026-10-10",
+        "signals": 14
+      },
+      {
+        "date": "2026-10-11",
+        "signals": 9
+      },
+      {
+        "date": "2026-10-12",
+        "signals": 12
+      },
+      {
+        "date": "2026-10-13",
+        "signals": 10
+      },
+      {
+        "date": "2026-10-14",
+        "signals": 10
+      },
+      {
+        "date": "2026-10-15",
+        "signals": 11
+      },
+      {
+        "date": "2026-10-16",
+        "signals": 8
+      },
+      {
+        "date": "2026-10-17",
+        "signals": 7
+      },
+      {
+        "date": "2026-10-18",
+        "signals": 9
+      },
+      {
+        "date": "2026-10-19",
+        "signals": 19
+      },
+      {
+        "date": "2026-10-20",
+        "signals": 10
+      },
+      {
+        "date": "2026-10-21",
+        "signals": 11
+      },
+      {
+        "date": "2026-10-22",
+        "signals": 10
+      },
+      {
+        "date": "2026-10-23",
+        "signals": 11
+      },
+      {
+        "date": "2026-10-24",
+        "signals": 13
+      },
+      {
+        "date": "2026-10-25",
+        "signals": 9
+      },
+      {
+        "date": "2026-10-26",
+        "signals": 11
+      },
+      {
+        "date": "2026-10-27",
+        "signals": 9
+      },
+      {
+        "date": "2026-10-28",
+        "signals": 15
+      },
+      {
+        "date": "2026-10-29",
+        "signals": 15
+      },
+      {
+        "date": "2026-10-30",
+        "signals": 9
+      },
+      {
+        "date": "2026-10-31",
+        "signals": 4
+      },
+      {
+        "date": "2026-11-01",
+        "signals": 8
+      },
+      {
+        "date": "2026-11-02",
+        "signals": 10
+      },
+      {
+        "date": "2026-11-03",
+        "signals": 15
+      },
+      {
+        "date": "2026-11-04",
+        "signals": 3
+      },
+      {
+        "date": "2026-11-05",
+        "signals": 6
+      },
+      {
+        "date": "2026-11-06",
+        "signals": 6
+      },
+      {
+        "date": "2026-11-07",
+        "signals": 11
+      },
+      {
+        "date": "2026-11-08",
+        "signals": 10
+      },
+      {
+        "date": "2026-11-09",
+        "signals": 9
+      },
+      {
+        "date": "2026-11-10",
+        "signals": 14
+      },
+      {
+        "date": "2026-11-11",
+        "signals": 15
+      },
+      {
+        "date": "2026-11-12",
+        "signals": 9
+      },
+      {
+        "date": "2026-11-13",
+        "signals": 12
+      },
+      {
+        "date": "2026-11-14",
+        "signals": 11
+      },
+      {
+        "date": "2026-11-15",
+        "signals": 11
+      },
+      {
+        "date": "2026-11-16",
+        "signals": 11
+      },
+      {
+        "date": "2026-11-17",
+        "signals": 16
+      },
+      {
+        "date": "2026-11-18",
+        "signals": 15
+      },
+      {
+        "date": "2026-11-19",
+        "signals": 11
+      },
+      {
+        "date": "2026-11-20",
+        "signals": 7
+      },
+      {
+        "date": "2026-11-21",
+        "signals": 14
+      },
+      {
+        "date": "2026-11-22",
+        "signals": 11
+      },
+      {
+        "date": "2026-11-23",
+        "signals": 8
+      },
+      {
+        "date": "2026-11-24",
+        "signals": 14
+      },
+      {
+        "date": "2026-11-25",
+        "signals": 14
+      },
+      {
+        "date": "2026-11-26",
+        "signals": 14
+      },
+      {
+        "date": "2026-11-27",
+        "signals": 16
+      },
+      {
+        "date": "2026-11-28",
+        "signals": 9
+      },
+      {
+        "date": "2026-11-29",
+        "signals": 10
+      },
+      {
+        "date": "2026-11-30",
+        "signals": 11
+      },
+      {
+        "date": "2026-12-01",
+        "signals": 13
+      },
+      {
+        "date": "2026-12-02",
+        "signals": 18
+      },
+      {
+        "date": "2026-12-03",
+        "signals": 14
+      },
+      {
+        "date": "2026-12-04",
+        "signals": 13
+      },
+      {
+        "date": "2026-12-05",
+        "signals": 12
+      },
+      {
+        "date": "2026-12-06",
+        "signals": 7
+      },
+      {
+        "date": "2026-12-07",
+        "signals": 9
+      },
+      {
+        "date": "2026-12-08",
+        "signals": 13
+      },
+      {
+        "date": "2026-12-09",
+        "signals": 14
+      },
+      {
+        "date": "2026-12-10",
+        "signals": 8
+      },
+      {
+        "date": "2026-12-11",
+        "signals": 11
+      },
+      {
+        "date": "2026-12-12",
+        "signals": 11
+      },
+      {
+        "date": "2026-12-13",
+        "signals": 13
+      },
+      {
+        "date": "2026-12-14",
+        "signals": 11
+      },
+      {
+        "date": "2026-12-15",
+        "signals": 10
+      },
+      {
+        "date": "2026-12-16",
+        "signals": 12
+      },
+      {
+        "date": "2026-12-17",
+        "signals": 12
+      },
+      {
+        "date": "2026-12-18",
+        "signals": 16
+      },
+      {
+        "date": "2026-12-19",
+        "signals": 7
+      },
+      {
+        "date": "2026-12-20",
+        "signals": 9
+      },
+      {
+        "date": "2026-12-21",
+        "signals": 15
+      },
+      {
+        "date": "2026-12-22",
+        "signals": 21
+      },
+      {
+        "date": "2026-12-23",
+        "signals": 11
+      },
+      {
+        "date": "2026-12-24",
+        "signals": 12
+      },
+      {
+        "date": "2026-12-25",
+        "signals": 9
+      },
+      {
+        "date": "2026-12-26",
+        "signals": 13
+      },
+      {
+        "date": "2026-12-27",
+        "signals": 17
+      },
+      {
+        "date": "2026-12-28",
+        "signals": 10
+      },
+      {
+        "date": "2026-12-29",
+        "signals": 15
+      },
+      {
+        "date": "2026-12-30",
+        "signals": 9
+      },
+      {
+        "date": "2026-12-31",
+        "signals": 12
+      }
+    ]
+  },
+  "target_comparison": {
+    "dismissed": {
+      "signals": 11595,
+      "transactions_per_signal_mean": 493.9614,
+      "transactions_per_signal_median": 455.0,
+      "amount_per_signal_mean": -60.5913
+    },
+    "escalated": {
+      "signals": 2405,
+      "transactions_per_signal_mean": 523.6345,
+      "transactions_per_signal_median": 493.0,
+      "amount_per_signal_mean": -95.4777
+    }
+  },
+  "method": {
+    "temporal_rule": "For transaction behavior sections, include only dated transactions at or before the linked signal date.",
+    "validation": "Five expanding chronological folds; each validation block follows its training data. The initial date block is warm-up only.",
+    "model_evaluation": {
+      "model": "xgboost_shallow",
+      "oof_roc_auc": 0.578205,
+      "oof_rows": 11982,
+      "feature_count": 28,
+      "fold_count": 5,
+      "fold_auc": [
+        {
+          "fold": 1,
+          "roc_auc": 0.570862
+        },
+        {
+          "fold": 2,
+          "roc_auc": 0.556755
+        },
+        {
+          "fold": 3,
+          "roc_auc": 0.568971
+        },
+        {
+          "fold": 4,
+          "roc_auc": 0.602231
+        },
+        {
+          "fold": 5,
+          "roc_auc": 0.624288
+        }
+      ],
+      "baseline_models": [
+        {
+          "model": "extra_trees",
+          "oof_roc_auc": 0.540623
+        },
+        {
+          "model": "hist_gradient_boosting",
+          "oof_roc_auc": 0.550711
+        }
+      ]
+    }
+  }
+}
+  </script>
   <script>
     const chapters = [
       ["overview", "1. Problem overview"], ["structure", "2. Dataset structure"], ["quality", "3. Data quality and time"],
@@ -106,7 +1390,16 @@
       if (id === "conclusion") html = `<h2>Final conclusion</h2><p>The strongest validated approach combines strict as-of-signal transaction history with interpretable count, amount, mix, recency, and calendar features. Controlled experiments favored a shallow XGBoost model on 28 features.</p><div class="callout"><b>Conclusion:</b> this static Pages report presents aggregate EDA and modeling decisions. It does not expose records or serve predictions.</div>`;
       content.innerHTML = html;
     }
-    fetch("assets/eda_summary.json").then(r => r.json()).then(data => { window.report = data; select("overview"); }).catch(() => { content.innerHTML = "<div class='callout'>The aggregate report could not be loaded.</div>"; });
+    // Keep this page self-contained: GitHub Pages can serve the report without a
+    // separate JSON request (which may fail when the site is opened under a
+    // project subpath or from a local file).
+    try {
+      window.report = JSON.parse(document.getElementById("eda-summary").textContent);
+      select("overview");
+    } catch (error) {
+      content.innerHTML = "<div class='callout'>The aggregate report could not be loaded. Please refresh the page.</div>";
+      console.error("Could not read embedded EDA summary", error);
+    }
   </script>
 </body>
 </html>
